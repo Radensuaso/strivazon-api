@@ -32,4 +32,51 @@ productsRouter.get("/", async (req, res, next) => {
   }
 })
 
+productsRouter.get("/:_id", async (req, res, next) => {
+  try {
+    const paramsID = req.params._id
+    const products = await readProducts()
+    const product = products.find((p) => p._id === paramsID)
+    if (product) {
+      res.send(product)
+    } else {
+      res.send(
+        createHttpError(
+          404,
+          `The Product with the id: ${paramsID} was not found.`
+        )
+      )
+    }
+  } catch (error) {
+    next(error)
+  }
+})
+
+productsRouter.get("/:_id/productsReviews", async (req, res, next) => {
+  try {
+    const paramsID = req.params._id
+    const products = await readProducts()
+    const product = products.find((p) => p._id === paramsID)
+    if (product) {
+      const productsReviews = await readProductsReviews()
+
+      console.log(productsReviews)
+
+      const particularProductReviews = productsReviews.filter(
+        (p) => p.productId === paramsID
+      )
+      res.send(particularProductReviews)
+    } else {
+      res.send(
+        createHttpError(
+          404,
+          `The Product with the id: ${paramsID} was not found.`
+        )
+      )
+    }
+  } catch (error) {
+    next(error)
+  }
+})
+
 export default productsRouter
