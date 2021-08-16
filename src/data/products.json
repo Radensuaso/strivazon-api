@@ -1,0 +1,13 @@
+[
+  {
+    "_id": "5d318e1a8541744830bef139",
+    "name": "3310",
+    "description": "something longer",
+    "brand": "nokia",
+    "imageUrl": "https://drop.ndtv.com/TECH/product_database/images/2152017124957PM_635_nokia_3310.jpeg?downsize=*:420&output-quality=80",
+    "price": 100,
+    "category": "smartphones",
+    "createdAt": "2019-07-19T09:32:10.535Z",
+    "updatedAt": "2019-07-19T09:32:10.535Z"
+  }
+]
