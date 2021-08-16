@@ -4,6 +4,7 @@ import {
   writeProducts,
   saveProductPicture,
   readProductsReviews,
+  removeProductPicture,
 } from "../../lib/fs-tools.js";
 import { productsValidation } from "./validation.js";
 import { validationResult } from "express-validator";
@@ -144,5 +145,61 @@ productsRouter.post(
     }
   }
 );
+
+productsRouter.put("/:_id", productsValidation, async (req, res, next) => {
+  try {
+    const errorList = validationResult(req);
+    if (errorList.isEmpty()) {
+      const paramsID = req.params._id;
+      const products = await readProducts();
+      const productToUpdate = products.find((p) => p._id === paramsID);
+
+      const updatedProduct = {
+        ...productToUpdate,
+        ...req.body,
+        updatedAt: new Date(),
+      };
+
+      const remainingProducts = products.filter((p) => p._id !== paramsID);
+
+      remainingProducts.push(updatedProduct);
+      await writeProducts(remainingProducts);
+
+      res.send(updatedProduct);
+    } else {
+      next(createHttpError(400, { errorList }));
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
+productsRouter.delete("/:_id", async (req, res, next) => {
+  try {
+    const paramsID = req.params._id;
+    const products = await readProducts();
+    const product = products.find((p) => p._id === paramsID);
+    if (product) {
+      const remainingProducts = products.filter((p) => p._id !== paramsID);
+
+      await writeProducts(remainingProducts);
+      await removeProductPicture(`${product._id}.jpg`);
+
+      res.send({
+        message: `The Product with the id: ${product._id} was deleted`,
+        blogPost: product,
+      });
+    } else {
+      next(
+        createHttpError(
+          404,
+          `The product with the id: ${paramsID} was not found`
+        )
+      );
+    }
+  } catch (error) {
+    next(error);
+  }
+});
 
 export default productsRouter;

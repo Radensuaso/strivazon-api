@@ -11,14 +11,25 @@
     "updatedAt": "2019-07-19T09:32:10.535Z"
   },
   {
-    "_id": "blfjfktxnksenhk8n",
-    "name": "Pants",
-    "description": "Iure laboriosam quisquam sit quae ducimus nihil molestiae. Minima eos enim. Ut provident atque alias.",
-    "brand": "Bartoletti, Gusikowski and Schulist",
-    "imageUrl": "http://localhost:3001/img/productsPictures/blfjfktxnksenhk8n.jpg",
-    "price": "515.75",
-    "category": "Chair",
-    "createdAt": "2021-08-16T13:06:04.342Z",
-    "updatedAt": "2021-08-16T13:06:04.342Z"
+    "_id": "qd3vy1tgksepuj95",
+    "name": "Towels",
+    "description": "Provident et voluptas sit qui quis debitis architecto placeat. Omnis sint aut id est.",
+    "brand": "Jenkins Inc",
+    "imageUrl": "http://localhost:3001/img/productsPictures/qd3vy1tgksepuj95.jpg",
+    "price": "796.50",
+    "category": "deposit",
+    "createdAt": "2021-08-16T14:12:08.824Z",
+    "updatedAt": "2021-08-16T14:12:08.824Z"
+  },
+  {
+    "_id": "qd3vy1tgksepulkk",
+    "name": "Shoes",
+    "description": "sed voluptate est",
+    "brand": "Jaskolski - Harvey",
+    "imageUrl": "http://localhost:3001/img/productsPictures/qd3vy1tgksepulkk.jpg",
+    "price": "931.42",
+    "category": "North",
+    "createdAt": "2021-08-16T14:12:11.828Z",
+    "updatedAt": "2021-08-16T14:12:11.828Z"
   }
 ]
