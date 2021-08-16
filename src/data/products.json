@@ -9,5 +9,16 @@
     "category": "smartphones",
     "createdAt": "2019-07-19T09:32:10.535Z",
     "updatedAt": "2019-07-19T09:32:10.535Z"
+  },
+  {
+    "_id": "blfjfktxnksenhk8n",
+    "name": "Pants",
+    "description": "Iure laboriosam quisquam sit quae ducimus nihil molestiae. Minima eos enim. Ut provident atque alias.",
+    "brand": "Bartoletti, Gusikowski and Schulist",
+    "imageUrl": "",
+    "price": "515.75",
+    "category": "Chair",
+    "createdAt": "2021-08-16T13:06:04.342Z",
+    "updatedAt": "2021-08-16T13:06:04.342Z"
   }
 ]

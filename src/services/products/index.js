@@ -5,6 +5,8 @@ import {
   saveProductPicture,
   readProductsReviews,
 } from "../../lib/fs-tools.js"
+import { productsValidation } from "./validation.js"
+import { validationResult } from "express-validator"
 import uniqid from "uniqid"
 import createHttpError from "http-errors"
 import multer from "multer"
@@ -75,6 +77,37 @@ productsRouter.get("/:_id/productsReviews", async (req, res, next) => {
       )
     }
   } catch (error) {
+    next(error)
+  }
+})
+
+productsRouter.post("/", productsValidation, async (req, res, next) => {
+  try {
+    const errorList = validationResult(req)
+    if (errorList.isEmpty()) {
+      const products = await readProducts()
+      const reqBody = req.body
+
+      const newProduct = {
+        _id: uniqid(),
+        name: reqBody.name,
+        description: reqBody.description,
+        brand: reqBody.brand,
+        imageUrl: "",
+        price: reqBody.price,
+        category: reqBody.category,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      }
+      products.push(newProduct)
+      await writeProducts(products)
+
+      res.status(201).send(newProduct)
+    } else {
+      next(createHttpError(400, { errorList }))
+    }
+  } catch (error) {
+    console.log(error)
     next(error)
   }
 })
