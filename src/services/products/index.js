@@ -17,7 +17,6 @@ const productsRouter = express.Router();
 productsRouter.get("/", async (req, res, next) => {
   try {
     const products = await readProducts();
-    console.log(products);
 
     if (req.query && req.query.category) {
       const filteredProducts = products.filter((product) =>
