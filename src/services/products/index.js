@@ -155,8 +155,8 @@ productsRouter.put("/:_id", productsValidation, async (req, res, next) => {
 
       const updatedProduct = {
         ...productToUpdate,
-        ...req.body,
         updatedAt: new Date(),
+        ...req.body,
       };
 
       const remainingProducts = products.filter((p) => p._id !== paramsID);
